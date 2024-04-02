@@ -1,0 +1,19 @@
+Source: ghost-phisher
+Section: utils
+Priority: extra
+Maintainer: Kali Developers <devel@kali.org>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.3
+Homepage: https://github.com/savio-code/ghost-phisher
+Vcs-Git: https://gitlab.com/kalilinux/packages/ghost-phisher.git
+Vcs-Browser: https://gitlab.com/kalilinux/packages/ghost-phisher
+
+Package: ghost-phisher
+Architecture: all
+Depends: ${misc:Depends}, aircrack-ng, python, python-scapy, python-qt4, subversion, xterm, metasploit-framework
+Description: GUI suite for phishing and penetration attacks
+ Ghost Phisher is a Wireless and Ethernet security auditing and attack software 
+ program written using the Python Programming Language and the Python Qt GUI 
+ library, the program is able to emulate access points and deploy various 
+ internal networking servers for networking, penetration testing and phishing 
+ attacks. 

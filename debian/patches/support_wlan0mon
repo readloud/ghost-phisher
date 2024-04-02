@@ -1,0 +1,48 @@
+Change the monitor mode interface detection from monX to wlanXmon to reflect the change in airmon-ng.
+--- a/Ghost-Phisher/gui/ghost_phisher.py
++++ b/Ghost-Phisher/gui/ghost_phisher.py
+@@ -537,9 +537,9 @@ class Ghost_phisher(QtGui.QMainWindow,Ui
+         attempt_monitor = commands.getstatusoutput("airmon-ng start %s"%(selected_card))
+         mon_string = ''
+         if attempt_monitor[0] == 0:
+-            if 'monitor mode enabled' in attempt_monitor[1]:
++            if 'monitor mode vif enabled' in attempt_monitor[1]:
+                 for iterate in os.listdir('/sys/class/net'):
+-                    if iterate.startswith('mon'):
++                    if iterate.endswith('mon'):
+                         mon_string += iterate
+                         break
+                 if mon_string == '':
+@@ -1978,13 +1978,13 @@ iptables -t nat -A PREROUTING -p tcp --d
+         interfaces = commands.getoutput("iwconfig").splitlines()
+ 
+         for card in os.listdir("/sys/class/net"):
+-            if(card.startswith("mon")):
++            if(card.endswith("mon")):
+                 commands.getoutput("airmon-ng stop " + card)
+ 
+         sys_interface_cards = os.listdir("/sys/class/net")
+ 
+         for card in sys_interface_cards:
+-            if(card.startswith("mon")):
++            if(card.endswith("mon")):
+                 continue
+             if(card == "lo"):               # Loopback interface
+                 continue
+@@ -2039,14 +2039,14 @@ iptables -t nat -A PREROUTING -p tcp --d
+                     monitor_output = commands.getstatusoutput("airmon-ng start " + selected_interface)
+ 
+                     if(monitor_output[0] == 0):
+-                        monitor_interface = re.findall("mon\d+",monitor_output[1])
++                        monitor_interface = re.findall("mon",monitor_output[1])
+ 
+                         if(monitor_interface):
+                             self.monitor_interface = monitor_interface[0]
+                             self.monitor_interface_led_2.setPixmap(self.green_light)
+                             self.host_interface = selected_interface
+ 
+-                        elif("monitor mode enabled" in monitor_output[1]):
++                        elif("monitor mode vif enabled" in monitor_output[1]):
+                             self.monitor_interface = selected_interface
+                             self.monitor_interface_led_2.setPixmap(self.green_light)
+                             self.host_interface = selected_interface

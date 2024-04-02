@@ -1,0 +1,32 @@
+Description: disable the update window 
+Author: Sophie Brun <sophie@freexian.com>
+Origin: vendor
+Last-Update: 2016-01-08
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/Ghost-Phisher/gui/ghost_phisher.py
++++ b/Ghost-Phisher/gui/ghost_phisher.py
+@@ -392,7 +392,8 @@ class Ghost_phisher(QtGui.QMainWindow,Ui
+         self.connect(ghost_trap_http,QtCore.SIGNAL("got new connection"),self.display_new_connection)
+         self.connect(ghost_trap_http,QtCore.SIGNAL("new download"),self.new_download)
+ 
+-        self.connect(self.update_function,QtCore.SIGNAL("new update available"),self.update_window)
++        # Disable window for upgrade
++        # self.connect(self.update_function,QtCore.SIGNAL("new update available"),self.update_window)
+ 
+         # Start Update checker
+         thread.start_new_thread(self.update_function.update_initializtion_check,())
+@@ -433,9 +434,10 @@ class Ghost_phisher(QtGui.QMainWindow,Ui
+             please run as root")
+             sys.exit(1)
+ 
+-    def update_window(self):
+-        self.update_function.display_update_version()
+-        self.update_function.exec_()
++    # disable the update
++    # def update_window(self):
++        # self.update_function.display_update_version()
++        # self.update_function.exec_()
+ 
+ 
+     def keyPressEvent(self,event):

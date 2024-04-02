@@ -1,0 +1,42 @@
+Description: disable the what's new window
+ This functionality is not necessary and it uses QtWebKit which is not
+ provided anymore by python-qt4.
+Author: Sophie Brun <sophie@freexian.com>
+Last-Update: 2017-02-16
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/Ghost-Phisher/gui/__init__.py
++++ b/Ghost-Phisher/gui/__init__.py
+@@ -1 +1 @@
+-__all__ = ["ghost_phisher", "font_settings", "tip_settings", "settings","ghost_ui","update_ui","whats_new","whats_new_ui"]
+\ No newline at end of file
++__all__ = ["ghost_phisher", "font_settings", "tip_settings", "settings","ghost_ui","update_ui"]
+--- a/Ghost-Phisher/gui/ghost_phisher.py
++++ b/Ghost-Phisher/gui/ghost_phisher.py
+@@ -21,7 +21,7 @@ from core import ghost_trap_core
+ from core import metasploit_payload
+ from core.update import update_class
+ from tip_settings import tip_settings
+-from whats_new import whats_new_window
++#from whats_new import whats_new_window
+ from font_settings import font_settings
+ 
+ from PyQt4 import QtCore, QtGui
+@@ -119,7 +119,7 @@ class Ghost_phisher(QtGui.QMainWindow,Ui
+         self.green_led = "%s/gui/images/green_led.png"%(cwd)
+ 
+         # Thread execute Tip settings dialog after 5 seconds
+-        thread.start_new_thread(self.run_whats_new_thread,())
++#        thread.start_new_thread(self.run_whats_new_thread,())
+         thread.start_new_thread(self.run_tips_thread,())
+ 
+         # Get data from database from initialization
+@@ -370,7 +370,7 @@ class Ghost_phisher(QtGui.QMainWindow,Ui
+         self.connect(self,QtCore.SIGNAL("dns stopped"),self.stop_dns)
+         self.connect(self.ghost_dns,QtCore.SIGNAL("new client connection"),self.update_dns_connections)
+         self.connect(self,QtCore.SIGNAL("run tips"),self.run_tips)
+-        self.connect(self,QtCore.SIGNAL("run whats new"),self.run_what_new)
++#        self.connect(self,QtCore.SIGNAL("run whats new"),self.run_what_new)
+         self.connect(self,QtCore.SIGNAL("access point output"),self.update_access_output)
+         self.connect(self,QtCore.SIGNAL("access point error"),self.update_access_error)
+         self.connect(self,QtCore.SIGNAL("access point started"),self.access_point_started)

@@ -1,0 +1,30 @@
+ghost-phisher (1.64-0kali3) kali-dev; urgency=medium
+
+  * Add a patch to drop the need of QtWebKit (no longer provided by
+    python-qt4): disable_whats_new.patch
+
+ -- Sophie Brun <sophie@freexian.com>  Thu, 16 Feb 2017 15:39:09 +0100
+
+ghost-phisher (1.64-0kali2) kali-dev; urgency=medium
+
+  * Patched to support wlan0mon
+
+ -- Devon Kearns <dookie@kali.org>  Fri, 15 Jan 2016 12:24:38 -0700
+
+ghost-phisher (1.64-0kali1) kali-dev; urgency=medium
+
+  * Import new upstream release
+
+ -- Sophie Brun <sophie@freexian.com>  Fri, 08 Jan 2016 11:51:25 +0100
+
+ghost-phisher (1.63-0kali1) kali; urgency=low
+
+  * Imported new upstream release
+
+ -- Devon Kearns <dookie@kali.org>  Mon, 09 Jun 2014 10:14:37 -0600
+
+ghost-phisher (1.62-1kali0) kali; urgency=low
+
+  * Initial release (Closes: #0000150)  
+
+ -- Devon Kearns <dookie@kali.org>  Tue, 11 Jun 2013 14:52:51 -0600

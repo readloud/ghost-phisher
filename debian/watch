@@ -1,0 +1,3 @@
+version=3
+opts="filenamemangle=s/.*\/v?(\d.*)\.tar\.gz/ghost-phisher-$1.tar.gz/" \
+https://github.com/savio-code/ghost-phisher/tags (?:.*/)?v?(\d.*)\.tar\.gz
